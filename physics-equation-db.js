@@ -88,7 +88,7 @@ const physicsEquations = {
             explanation: "Capacitance of a Parallel Plate Capacitor"
         },
         {
-            latex: 'c = \\sqrt{a^2 + b^2}',
+            latex: '\\sqrt{a^2 + b^2}',
             fullEquation: 'c = \\sqrt{a^2 + b^2}',
             explanation: "Pythagorean theorem, where c represents the hypotenuse"
         }
@@ -174,8 +174,8 @@ const physicsEquations = {
             explanation: "Lorentz force on a charge moving in electric and magnetic fields"
         },
         {
-            latex: 'N_A c',
-            fullEquation: 'F = N_A c',
+            latex: 'N_A e',
+            fullEquation: 'F = N_A e',
             explanation: "Faraday constant, which describes how much charge there is in one mol of electrons"
         },
 
@@ -197,8 +197,8 @@ const physicsEquations = {
             explanation: "Change in Gibbs Free Energy"
         },
         {
-            latex: '6.674 \\times 10^{-11} Nm^2/kg^2',
-            fullEquation: 'G = 6.674 \\times 10^{-11} Nm^2/kg^2',
+            latex: '6.674 \\times 10^{-11}~\\text{N} \\cdot \\text{m}^2 / \\text{kg}^2',
+            fullEquation: 'G = 6.674 \\times 10^{-11}~\\text{N} \\cdot \\text{m}^2 / \\text{kg}^2',
             explanation: "Gravitational constant"
         }
     ],
@@ -238,8 +238,8 @@ const physicsEquations = {
     ],
     'J': [
         {
-            latex: '\\int \\textbf{F}\\,dt',
-            fullEquation: '\\vec{J} = \\int \\textbf{F}\\,dt',
+            latex: '\\int \\vec{F}\\,dt',
+            fullEquation: '\\vec{J} = \\int \\vec{F}\\,dt',
             explanation: "One of the definitions for Impulse"
         },
         {
@@ -260,11 +260,11 @@ const physicsEquations = {
         {
             latex: '\\frac{d^2v}{dt^2}',
             fullEquation: 'j = \\frac{d^2v}{dt^2}',
-            explanation: "First derivative of acceleration (jerk)"
+            explanation: "Second derivative of velocity (jerk)"
         },
         {
-            latex: '\\text{kg m}^2/\\text{s}^2',
-            fullEquation: 'J = \\text{kg m}^2/\\text{s}^2',
+            latex: '\\text{kg} \\cdot \\text{m}^2 / \\text{s}^2',
+            fullEquation: 'J = \\text{kg} \\cdot \\text{m}^2 / \\text{s}^2',
             explanation: "SI units for a Joule (unit of energy)"
         }
     ],
@@ -348,8 +348,8 @@ const physicsEquations = {
             explanation: "Euler's identity, where e^{i\\pi} + 1 = 0"
         },
         {
-            latex: '\\frac{dL}{dt} - \\frac{d}{dt}\\left(\\frac{dL}{dq}\\right)',
-            fullEquation: '0 = \\frac{dL}{dt} - \\frac{d}{dt}\\left(\\frac{dL}{dq}\\right)',
+            latex: '\\frac{\\partial L}{\\partial q} - \\frac{d}{dt}\\left(\\frac{\\partial L}{\\partial \\dot{q}}\\right)',
+            fullEquation: '0 = \\frac{\\partial L}{\\partial q} - \\frac{d}{dt}\\left(\\frac{\\partial L}{\\partial \\dot{q}}\\right)',
             explanation: "Euler-Lagrange equation, representing stationary action in classical mechanics"
         },
         {
@@ -358,8 +358,8 @@ const physicsEquations = {
             explanation: "Maxwell's equation (Gauss's law for magnetism in integral form), which equals zero"
         },
         {
-            latex: '\\gamma^\\mu \\partial_\\mu \\psi - m \\psi',
-            fullEquation: '0 = \\gamma^\\mu \\partial_\\mu \\psi - m \\psi',
+            latex: 'i\\gamma^\\mu \\partial_\\mu \\psi - m \\psi',
+            fullEquation: '0 = i\\gamma^\\mu \\partial_\\mu \\psi - m \\psi',
             explanation: "Dirac equation, representing relativistic quantum mechanics"
         },
         {
@@ -414,7 +414,7 @@ const physicsEquations = {
         },
         {
             latex: '\\epsilon_0\\oint \\vec{E} \\cdot d\\vec{A}',
-            fullEquation: '\\epsilon_0\\oint \\vec{E} \\cdot d\\vec{A} = Q_{\\text{enc}}',
+            fullEquation: 'Q_{\\text{enc}} = \\epsilon_0\\oint \\vec{E} \\cdot d\\vec{A}',
             explanation: "Gauss's law (electric flux through closed surface equals enclosed charge over ε₀)"
         }
     ],
@@ -435,8 +435,8 @@ const physicsEquations = {
             explanation: "Universal gas constant"
         },
         {
-            latex: '\\frac{\\alpha^2 m_e c^2}{2h}',
-            fullEquation: 'R_\\infty = \\frac{\\alpha^2 m_e c^2}{2h}',
+            latex: '\\frac{\\alpha^2 m_e c}{2h}',
+            fullEquation: 'R_\\infty = \\frac{\\alpha^2 m_e c}{2h}',
             explanation: "Rydberg constant, used when concerning the electromagnetic spectra of an atom"
         }
     ],
@@ -546,7 +546,7 @@ const physicsEquations = {
     ],
     'Z': [
         {
-            latex: '\\sum e^{-E/(k_B T)}',
+            latex: '\\sum_{i} e^{-E_i/(k_B T)}',
             fullEquation: 'Z = \\sum_{i} e^{-E_i/(k_B T)}',
             explanation: "Partition function Z (sum of e^(-E/(k_B T)) over states)"
         },
