@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const physicsEquations = window.physicsEquations
 
-    loadValidGuesses().then(words => {
+    const validGuessesPromise = loadValidGuesses().then(words => {
         validGuesses = words;
       });
 
@@ -1155,7 +1155,9 @@ function handleKeyInput(key) {
             currentGuess++;
             isGameComplete = true;
             stopTimer();
-            updateStreakOnSolve()
+            if (!unlimitedMode) {
+                updateStreakOnSolve();
+            }
             saveGameState(); // Save state including the last guess
             showSuccessMessage();
         } else if (currentGuess >= MAX_GUESSES - 1) {
@@ -1163,6 +1165,9 @@ function handleKeyInput(key) {
             currentGuess++;
             isGameComplete = true;
             stopTimer();
+            if (!unlimitedMode) {
+                resetStreakOnLoss();
+            }
             saveGameState(); // Save state including the last guess
             showFailureMessage();
         } else {
@@ -1493,6 +1498,7 @@ function showFailureMessage() {
 
 	// Start timer
 	function startTimer() {
+		clearInterval(timerInterval);
 		startTime = Date.now();
 		timerInterval = setInterval(updateTimer, 1000);
 	}
@@ -1511,10 +1517,13 @@ function showFailureMessage() {
 	}
 
     async function startGame() {
+        // Ensure valid guesses are loaded before allowing play
+        await validGuessesPromise;
+
         // Hide start button and show game board
         startButton.style.display = 'none';
         gameBoard.style.display = 'block';
-    
+
         // Reset game state
         currentGuess = 0;
         currentPosition = 0;
@@ -1535,6 +1544,7 @@ function showFailureMessage() {
     }
 
 async function startUnlimitedGame() {
+    await validGuessesPromise;
     unlimitedMode = true;
     // Hide both daily and unlimited start buttons
     document.getElementById('start-button').style.display = 'none';
@@ -1606,7 +1616,7 @@ async function startUnlimitedGame() {
 		} else if (e.key.match(/^[a-zA-Z]$/)) {
 			handleKeyInput(e.key.toUpperCase());
 		} else if (e.key === 'ArrowRight') {
-			if (currentPosition < WORD_LENGTH) {
+			if (currentPosition < WORD_LENGTH - 1) {
 				currentPosition++;
 				highlightCurrentCell();
 			}
@@ -1618,10 +1628,7 @@ async function startUnlimitedGame() {
 		}
 	});
 
-	// Initialize date display and load puzzle
-	updateDateDisplay().catch(error => {
-		console.error('Error initializing date display:', error);
-	});
+	// Note: updateDateDisplay() is already called above during initialization
 
 	// Render all LaTeX on the page and adjust sizes
 	document.querySelectorAll('.latex').forEach(element => {
@@ -1686,10 +1693,12 @@ async function startUnlimitedGame() {
             streakData.streak = 1;
             streakData.bestStreak = 1;
         } else {
-            // Compare with last solved date
-            const last = new Date(streakData.lastSolvedDate);
-            const diff = Math.floor((now - last) / (1000 * 60 * 60 * 24));
-    
+            // Compare calendar dates using local date strings to avoid timezone issues
+            const lastParts = streakData.lastSolvedDate.split('-').map(Number);
+            const lastDate = new Date(lastParts[0], lastParts[1] - 1, lastParts[2]);
+            const todayDate = new Date(year, now.getMonth(), now.getDate());
+            const diff = Math.round((todayDate - lastDate) / (1000 * 60 * 60 * 24));
+
             if (diff === 1) {
                 // Solved 1 day after last solve => increment streak
                 streakData.streak++;
@@ -1716,6 +1725,13 @@ async function startUnlimitedGame() {
         updateStreakUI();
     }
     
+    function resetStreakOnLoss() {
+        let streakData = getStreakData();
+        streakData.streak = 0;
+        saveStreakData(streakData);
+        updateStreakUI();
+    }
+
     function updateStreakUI() {
         const streakData = getStreakData();
         const streakDisplay = document.getElementById('streak-display');
