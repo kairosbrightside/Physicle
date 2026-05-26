@@ -52,6 +52,12 @@ const physicsEquations = {
             latex: '\\frac{d^2x}{dt^2}',
             fullEquation: 'a = \\frac{d^2x}{dt^2}',
             explanation: "Second derivative of position (acceleration)"
+        },
+
+                {
+            latex: '1 \\times 10^{-10}~\\text{m}',
+            fullEquation: '\\dot{A} = 10^{-10}~\\text{m}',
+            explanation: "Angstroms, the unit of length typically used to measure interatomic distances"
         }
     ],
     'B': [
@@ -212,6 +218,11 @@ const physicsEquations = {
             latex: '\\begin{bmatrix} \\frac{\\partial^2 f}{\\partial x^2} & \\frac{\\partial^2 f}{\\partial x \\partial y} \\\\ \\frac{\\partial^2 f}{\\partial y \\partial x} & \\frac{\\partial^2 f}{\\partial y^2} \\end{bmatrix}',
             fullEquation: 'H = \\begin{bmatrix} \\frac{\\partial^2 f}{\\partial x^2} & \\frac{\\partial^2 f}{\\partial x \\partial y} \\\\ \\frac{\\partial^2 f}{\\partial y \\partial x} & \\frac{\\partial^2 f}{\\partial y^2} \\end{bmatrix}',
             explanation: "Hessian matrix for a function of two variables f(x,y)"
+        },
+        {
+            latex: '\\frac{1}{\\mu_0} \\vec{B} -\\vec{M}',
+            fullEquation: '\\vec{H}=\\frac{1}{\\mu_0} \\vec{B} -\\vec{M}',
+            explanation: "Magnetic field strength (how magnetixed a given region of material is)"
         }
     ],
     'I': [
@@ -450,6 +461,11 @@ const physicsEquations = {
             latex: '\\int_{t_1}^{t_2} \\left(\\frac{1}{2} m v^2(t) - mgx(t) \\right) dt',
             fullEquation: 'S = \\int_{t_1}^{t_2} \\left(\\frac{1}{2} m v^2(t) - mgx(t) \\right) dt',
             explanation: "Action integral in classical mechanics"
+        },
+        {
+            latex: '\\vec{E}\\times \\vec{H}',
+            fullEquation: 'S = \\vec{E}\\times \\vec{H}',
+            explanation: "Poynting vector (power flow of an electrocmagnetic field)"
         }
     ],
     'T': [
@@ -493,6 +509,11 @@ const physicsEquations = {
         {
             latex: '-\\frac{G M m}{r}',
             fullEquation: 'U = -\\frac{G M m}{r}',
+            explanation: "Gravitational potential energy of two masses separated by distance r"
+        },
+        {
+            latex: '1.6605\\times 10^{-27}~\\text{kg}',
+            fullEquation: '1u = 1.6605\\times 10^{-27}~\\text{kg}',
             explanation: "Gravitational potential energy of two masses separated by distance r"
         }
     ],
