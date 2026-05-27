@@ -75,6 +75,11 @@ const physicsEquations = {
             latex: '\\frac{\\mu_0 I}{2 \\pi r}',
             fullEquation: 'B = \\frac{\\mu_0 I}{2 \\pi r}',
             explanation: "The magnetic field of an infinitely long straight wire"
+        },
+        {
+            latex: '\\frac{1}{k_B T}',
+            fullEquation: '\\beta= \\frac{1}{k_B T}',
+            explanation: "Thermodynamic beta (coldness)"
         }
     ],
     'C': [
