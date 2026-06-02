@@ -166,6 +166,11 @@ const physicsEquations = {
             latex: '\\sqrt{p^2 c^2 + m^2 c^4}',
             fullEquation: 'E = \\sqrt{p^2 c^2 + m^2 c^4}',
             explanation: "Relativistic energy in terms of momentum"
+        },
+        {
+            latex: '\\frac{\\hbar^2}{2m_0} \\left(\\frac{3\\pi^2 N}{V}\\right)^{2/3}',
+            fullEquation: 'E_F=\\frac{\\hbar^2}{2m_0} \\left(\\frac{3\\pi^2 N}{V}\\right)^{2/3}',
+            explanation: "Fermi energy for non-relativisting, non-interacting spin 1/2 fermion ensemble"
         }
     ],
     'F': [
@@ -394,6 +399,11 @@ const physicsEquations = {
             latex: 'm v',
             fullEquation: 'p = m v',
             explanation: "Momentum defined as mass times velocity"
+        },
+        {
+            latex: '\\sqrt{2m_0E_F}',
+            fullEquation: 'p_F=\\sqrt{2m_0E_F}',
+            explanation: "Fermii momentum"
         },
         {
             latex: 'I V',
